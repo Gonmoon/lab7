@@ -1,0 +1,139 @@
+.wrapper {
+    height: 100vh;
+    background: linear-gradient(#db5c01 0%, #99998f 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title {
+    text-align: center;
+    padding: 2% 0 0 0;
+    color: #fff;
+    font-size: 64px;
+}
+.wrapper_item {
+    display: flex;
+    gap: 1rem;
+}
+.input_wrapper {
+}
+.input {
+    border: 1px solid #db5c01;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #db5c01;
+    background: #1b1612;
+    padding: 8px 15px;
+    margin: 0 0 5px 0;
+}
+.input:focus {
+    border: 1px solid #fff;
+    color: #fff;
+}
+.todo_list {
+    border-radius: 5px;
+    background: #1b1612;
+    width: 100%;
+    margin: 2% 0 0 0;
+}
+.todo_item {
+    padding: 5px;
+}
+.selected {
+    background: #db5c01;
+}
+.todo_item_edit {
+    border: 1px solid #db5c01;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #db5c01;
+    background: #1b1612;
+    padding: 8px 15px;
+    text-align: center;
+    width: 100%;
+    text-align: center;
+}
+.todo_item_text {
+    color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: #1b1612;
+    padding: 2rem;
+    border-radius: 8px;
+    min-width: 300px;
+    color: #db5c01;
+}
+
+.modal_input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.modal_buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    color: #fff;
+    font-size: 24px;
+    justify-content: center;
+    align-items: center;
+}
+.filterGroup {
+    margin: 0 3px 0 0;
+}
+.searchInput {
+    border: 1px solid #db5c01;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #db5c01;
+    background: #1b1612;
+    padding: 8px 15px;
+    margin: 0 0 5px 0;
+}
+.select {
+    border: 1px solid #db5c01;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #db5c01;
+    background: #1b1612;
+    padding: 8px 15px;
+    margin: 0 0 5px 0;
+}
+.resetButton {
+    border: 1px solid #db5c01;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #db5c01;
+    background: #1b1612;
+    padding: 8px 15px;
+    margin: 0 0 5px 0;
+}
+.resetButton:hover {
+    border: 1px solid #fff;
+    color: #fff;
+}

@@ -1,0 +1,24 @@
+.contact {
+    display: flex;
+    background: #1b1612;
+    height: 100px;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.info {
+    text-align: center;
+    font-size: 48px;
+    margin: 0 20px 0 0;
+}
+
+@media screen and (max-width: 450px) {
+    .contact {
+        height: 150px;
+    }
+    .info {
+        margin: 0;
+    }
+}
