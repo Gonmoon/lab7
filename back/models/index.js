@@ -21,9 +21,11 @@ const db = {
   Publication: require('./publication')(sequelize, Sequelize),
   Recipient: require('./recipient')(sequelize, Sequelize),
   Subscription: require('./subscription')(sequelize, Sequelize),
+  User: require('./user')(sequelize, Sequelize),
+  PasswordResetCode: require('./passwordResetCode')(sequelize, Sequelize),
 };
 
-// Определение связей
+// Определение связей между существующими моделями
 db.Recipient.hasMany(db.Subscription, {
   foreignKey: 'recipient_id',
   as: 'subscriptions'
@@ -40,6 +42,18 @@ db.Publication.hasMany(db.Subscription, {
 db.Subscription.belongsTo(db.Publication, {
   foreignKey: 'publication_index',
   as: 'publication'
+});
+
+// Связи для аутентификации
+db.User.hasMany(db.PasswordResetCode, {
+  foreignKey: 'email',
+  sourceKey: 'email',
+  as: 'resetCodes'
+});
+db.PasswordResetCode.belongsTo(db.User, {
+  foreignKey: 'email',
+  targetKey: 'email',
+  as: 'user'
 });
 
 module.exports = db;

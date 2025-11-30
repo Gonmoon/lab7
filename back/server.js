@@ -12,11 +12,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/protected', require('./routes/protected')); // Добавьте эту строку
 app.use('/api/publications', require('./routes/publications'));
 app.use('/api/recipients', require('./routes/recipients'));
 app.use('/api/subscriptions', require('./routes/subscriptions'));
 
-// Health check
+// Health check (публичный)
 app.get('/health', async (req, res) => {
   try {
     await sequelize.authenticate();
@@ -41,13 +43,14 @@ app.use(errorHandler);
 // Sync database and start server
 async function startServer() {
   try {
-    await sequelize.sync({ force: false }); // Используйте { force: true } только для разработки
+    await sequelize.sync({ force: false });
     console.log('Database synchronized');
     
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
       console.log(`Health check: http://localhost:${PORT}/health`);
-      console.log(`API Base URL: http://localhost:${PORT}/api`);
+      console.log(`Auth API: http://localhost:${PORT}/api/auth`);
+      console.log(`Protected API: http://localhost:${PORT}/api/protected`);
     });
   } catch (error) {
     console.error('Unable to start server:', error);

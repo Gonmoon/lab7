@@ -1,45 +1,53 @@
-const errorHandler = (err, req, res, next) => {
-  console.error(err);
+const notFoundHandler = (req, res, next) => {
+  res.status(404).json({
+    success: false,
+    message: `Route ${req.method} ${req.url} not found`
+  });
+};
 
+const errorHandler = (err, req, res, next) => {
+  console.error('Error:', err);
+
+  // JWT ошибки
+  if (err.name === 'JsonWebTokenError') {
+    return res.status(401).json({
+      success: false,
+      message: 'Недействительный токен'
+    });
+  }
+
+  if (err.name === 'TokenExpiredError') {
+    return res.status(401).json({
+      success: false,
+      message: 'Токен истек'
+    });
+  }
+
+  // Sequelize ошибки
   if (err.name === 'SequelizeValidationError') {
-    const errors = err.errors.map(error => ({
-      field: error.path,
-      message: error.message
-    }));
     return res.status(400).json({
-      error: 'Validation Error',
-      details: errors
+      success: false,
+      message: 'Ошибка валидации',
+      errors: err.errors.map(e => e.message)
     });
   }
 
   if (err.name === 'SequelizeUniqueConstraintError') {
-    return res.status(400).json({
-      error: 'Unique Constraint Error',
-      message: 'Запись с такими данными уже существует'
+    return res.status(409).json({
+      success: false,
+      message: 'Конфликт уникальности',
+      errors: err.errors.map(e => e.message)
     });
   }
 
-  if (err.name === 'SequelizeForeignKeyConstraintError') {
-    return res.status(400).json({
-      error: 'Foreign Key Constraint Error',
-      message: 'Связанная запись не существует'
-    });
-  }
-
+  // Общая ошибка сервера
   res.status(500).json({
-    error: 'Internal Server Error',
-    message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
-  });
-};
-
-const notFoundHandler = (req, res) => {
-  res.status(404).json({
-    error: 'Not Found',
-    message: `Route ${req.method} ${req.path} not found`
+    success: false,
+    message: 'Внутренняя ошибка сервера'
   });
 };
 
 module.exports = {
-  errorHandler,
-  notFoundHandler
+  notFoundHandler,
+  errorHandler
 };
