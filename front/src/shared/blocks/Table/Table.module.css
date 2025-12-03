@@ -1,0 +1,599 @@
+/* Основные стили */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+/* Панель управления */
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.searchContainer {
+  flex: 1;
+  min-width: 200px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.addButton,
+.exportButton,
+.resetButton,
+.deleteButton,
+.clearSelection,
+.pageButton {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  background: white;
+  transition: all 0.2s;
+}
+
+.addButton:hover,
+.exportButton:hover,
+.resetButton:hover {
+  background: #f8f9fa;
+}
+
+.addButton {
+  border-color: #28a745;
+  color: #28a745;
+}
+
+.exportButton {
+  border-color: #17a2b8;
+  color: #17a2b8;
+}
+
+.exportButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.resetButton {
+  border-color: #6c757d;
+  color: #6c757d;
+}
+
+.deleteButton {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.deleteButton:hover {
+  background: #f8d7da;
+}
+
+/* Информация о выбранных */
+.selectionInfo {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: #e7f3ff;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border-left: 3px solid #007bff;
+}
+
+.selectionInfo span {
+  font-size: 13px;
+  color: #495057;
+}
+
+.selectionInfo strong {
+  font-weight: 600;
+}
+
+.clearSelection {
+  margin-left: auto;
+  background: none;
+  color: #007bff;
+  text-decoration: underline;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.clearSelection:hover {
+  color: #0056b3;
+}
+
+/* Фильтры */
+.columnFilters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.filterLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 4px;
+}
+
+.filterInput,
+.filterSelect {
+  padding: 6px 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 13px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filterInput:focus,
+.filterSelect:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+
+
+.rangeFilter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rangeInput {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 13px;
+  text-align: center;
+  min-width: 0;
+}
+
+.rangeInput:focus {
+  outline: none;
+  border-color: #80bdff;
+}
+
+.rangeFilter span {
+  color: #6c757d;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+/* Таблица */
+.tableContainer {
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+  background: white;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+
+.th {
+  background: #f8f9fa;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  color: #495057;
+  font-size: 13px;
+  border-bottom: 2px solid #dee2e6;
+  white-space: nowrap;
+}
+
+.tr {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.tr:hover {
+  background-color: #f8f9fa;
+}
+
+.tr.selectedRow {
+  background-color: #e7f3ff;
+}
+
+.td {
+  padding: 10px;
+  font-size: 13px;
+  color: #495057;
+  vertical-align: middle;
+}
+
+/* Заголовки */
+.headerCell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.sortable {
+  cursor: pointer;
+}
+
+.sortable:hover {
+  color: #007bff;
+}
+
+/* Чекбоксы */
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #007bff;
+}
+
+/* Стили для ячеек */
+.stockCell {
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.outOfStock {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.lowStock {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.rating {
+  color: #ffc107;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ratingNumber {
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.statusActive {
+  background: #d4edda;
+  color: #155724;
+}
+
+.statusOutOfStock {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.statusDiscontinued {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+/* Редактируемые ячейки */
+.editableCell {
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+  display: inline-block;
+  min-width: 120px;
+}
+
+.editableCell:hover {
+  background-color: #e7f3ff;
+}
+
+.editInput {
+  padding: 4px 6px;
+  border: 1px solid #007bff;
+  border-radius: 3px;
+  font-size: 13px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.editInput:focus {
+  outline: none;
+  border-color: #0056b3;
+}
+
+/* Нет данных */
+.noData {
+  padding: 60px 20px;
+  text-align: center;
+  color: #6c757d;
+  background: #f8f9fa;
+}
+
+.noData p {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.noData button {
+  padding: 6px 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.noData button:hover {
+  background: #0056b3;
+}
+
+/* Пагинация */
+.pagination {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.paginationInfo {
+  font-size: 13px;
+  color: #6c757d;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pageButton {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.pageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 4px;
+}
+
+.pageNumber {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+.pageNumber:hover {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.activePage {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pageSize {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #495057;
+}
+
+.pageSizeSelect {
+  padding: 4px 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pageSizeSelect:focus {
+  outline: none;
+  border-color: #80bdff;
+}
+
+/* Скроллбар */
+.tableContainer::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tableContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.tableContainer::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.tableContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .searchContainer {
+    width: 100%;
+  }
+  
+  .buttons {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .columnFilters {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .selectionInfo {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .clearSelection {
+    margin-left: 0;
+    align-self: flex-end;
+  }
+  
+  .pagination {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  
+  .paginationControls {
+    order: 2;
+  }
+  
+  .paginationInfo {
+    order: 1;
+  }
+  
+  .pageSize {
+    order: 3;
+  }
+  
+  .table {
+    font-size: 12px;
+  }
+  
+  .th,
+  .td {
+    padding: 8px 6px;
+  }
+  
+  .pageButton {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+  
+  .pageNumber {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .columnFilters {
+    grid-template-columns: 1fr;
+  }
+  
+  .rangeFilter {
+    flex-wrap: nowrap;
+  }
+  
+  .pageNumbers {
+    display: none;
+  }
+}
+
+/* Улучшения для фокуса */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Тени при наведении */
+.addButton:hover,
+.exportButton:hover,
+.resetButton:hover,
+.pageButton:hover:not(:disabled),
+.pageNumber:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

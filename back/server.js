@@ -17,7 +17,7 @@ app.use('/api/protected', require('./routes/protected')); // Добавьте э
 app.use('/api/publications', require('./routes/publications'));
 app.use('/api/recipients', require('./routes/recipients'));
 app.use('/api/subscriptions', require('./routes/subscriptions'));
-// app.use('/api/export', require('./routes/export'));
+
 
 // Health check (публичный)
 app.get('/health', async (req, res) => {

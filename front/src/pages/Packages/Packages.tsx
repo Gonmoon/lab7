@@ -1,7 +1,8 @@
 import React from 'react';
 import Export from '@shared/blocks/Export';
 import Charts from '@shared/blocks/Charts';
-import Forms from '@shared/blocks/Forms';
+import DnD from '@shared/blocks/DnD';
+import Table from '@shared/blocks/Table';
 
 
 const Packages: React.FC = () => {
@@ -9,7 +10,8 @@ const Packages: React.FC = () => {
 		<>
 		 <Export />
 		 <Charts />
-		 <Forms />
+		 <DnD />
+		 <Table />
 		</>
 	)
 }

@@ -22,7 +22,6 @@ const initialState: TodosState = {
 
 const API_URL = 'http://localhost:3001/todos';
 
-// Async thunks
 export const fetchTodos = createAsyncThunk('todos/fetchTodos', async (_, { rejectWithValue }) => {
     try {
         const response = await axios.get(API_URL);
@@ -112,7 +111,6 @@ const todosSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            // Fetch todos
             .addCase(fetchTodos.pending, (state) => {
                 state.loading = true;
                 state.error = null;
@@ -125,7 +123,6 @@ const todosSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload as string;
             })
-            // Add todo
             .addCase(addTodo.pending, (state) => {
                 state.loading = true;
                 state.error = null;
@@ -138,14 +135,12 @@ const todosSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload as string;
             })
-            // Delete todo
             .addCase(deleteTodo.fulfilled, (state, action) => {
                 state.items = state.items.filter((todo) => todo.id !== action.payload);
             })
             .addCase(deleteTodo.rejected, (state, action) => {
                 state.error = action.payload as string;
             })
-            // Update todo
             .addCase(updateTodo.fulfilled, (state, action) => {
                 const index = state.items.findIndex((todo) => todo.id === action.payload.id);
                 if (index !== -1) {
@@ -155,7 +150,6 @@ const todosSlice = createSlice({
             .addCase(updateTodo.rejected, (state, action) => {
                 state.error = action.payload as string;
             })
-            // Delete selected todos
             .addCase(deleteSelectedTodos.fulfilled, (state, action) => {
                 state.items = state.items.filter((todo) => !action.payload.includes(todo.id));
             })

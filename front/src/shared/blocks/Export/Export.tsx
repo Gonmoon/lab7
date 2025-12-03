@@ -558,7 +558,7 @@ const Export: React.FC = () => {
                 value="word"
                 checked={exportType === 'word'}
                 onChange={(e) => setExportType(e.target.value as 'excel' | 'word')}
-                className={styles.radioCustom}
+                className={styles.radioInput}
               />
               <span className={styles.radioCustom}></span>
               Word (.docx) - для печати и презентаций
